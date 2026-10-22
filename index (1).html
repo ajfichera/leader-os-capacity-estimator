@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Leadership Capacity Estimator | The Business Athlete</title>
+<meta name="description" content="Explore where leadership capacity is being consumed and what could become possible if some of it were redirected.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+<header class="topbar">
+  <img src="assets/brand-logo-dark.png" alt="The Business Athlete">
+  <div class="top-right">Leadership Capacity Estimator</div>
+</header>
+<div class="progress-wrap"><div id="progress" class="progress"></div></div>
+
+<section class="stage dark active" id="stage-hero">
+  <img class="mono-ghost" src="assets/brand-mono-dark.png" alt="" aria-hidden="true">
+  <div class="inner hero">
+    <div>
+      <div class="eyebrow">Leader OS • Interactive Experience</div>
+      <h1>WHAT COULD<br><span class="red">RECOVERED</span><br>LEADERSHIP<br>CAPACITY<br>MAKE POSSIBLE?</h1>
+      <p class="hero-copy">
+        Leadership time rarely disappears all at once. It gets consumed by recurring patterns:
+        reactive demands, rework, decision friction, and dependence on the leader.
+        This experience helps you estimate what might be redirected if those patterns improve.
+      </p>
+      <div class="hero-action"><button class="cta" onclick="go(1)">Build My Capacity Picture →</button></div>
+      <div class="rule"></div>
+      <div class="note">About 2 minutes. No email required. You supply the assumptions. We show the math.</div>
+    </div>
+    <aside class="hero-aside">
+      <div class="big">THE GOAL ISN'T<br>SIMPLY TO CREATE<br><span class="red">MORE TIME.</span></div>
+      <p>It is to create more capacity for the work leadership actually requires.</p>
+      <p>Priority work. Better preparation. Coaching the team. Customers. Strategy. Sales. Decisions.</p>
+    </aside>
+  </div>
+</section>
+
+<section class="stage light" id="stage-people">
+  <div class="inner">
+    <div class="step-head">
+      <div>
+        <div class="step-kicker">01 • Scope</div>
+        <h2 class="step-title">WHO ARE WE<br><span class="red">THINKING ABOUT?</span></h2>
+        <p class="step-lead">
+          Choose one leader or a leadership team. If you choose a team, the time estimates on the next screen should represent an average per leader.
+        </p>
+      </div>
+      <div class="step-count">01</div>
+    </div>
+    <div class="choice-grid">
+      <button class="choice selected" data-segment="individual">
+        <div class="num">01</div><h3>One Leader</h3>
+        <p>Use this when you are thinking about one person's leadership capacity.</p>
+      </button>
+      <button class="choice" data-segment="team">
+        <div class="num">06–12</div><h3>A Leadership Team</h3>
+        <p>Use this when you want to estimate capacity across a group. Enter an average weekly estimate per leader on the next screen.</p>
+      </button>
+    </div>
+    <div class="team-count" id="teamCount">
+      <div><strong>How many leaders?</strong><div class="note">This number is used to calculate the total team capacity shown in the report.</div></div>
+      <input id="leaderCount" type="number" min="2" max="12" value="8">
+    </div>
+    <div class="navrow"><button class="back" onclick="go(0)">← Back</button><button class="next" onclick="go(2)">Continue →</button></div>
+  </div>
+</section>
+
+<section class="stage dark" id="stage-leaks">
+  <div class="inner">
+    <div class="step-head">
+      <div>
+        <div class="step-kicker">02 • Weekly capacity drains</div>
+        <h2 class="step-title">WHERE IS LEADERSHIP<br><span class="red">TIME GETTING PULLED AWAY?</span></h2>
+        <p class="step-lead">
+          Estimate how many hours per week could realistically be reduced in each broad area if the operating pattern improved.
+          For a team, enter an average per leader. Avoid counting the same time twice.
+        </p>
+      </div>
+      <div class="step-count">02</div>
+    </div>
+
+    <div class="leak-grid">
+      <div class="leak">
+        <strong>Reactive Pull</strong>
+        <p>Interruptions, urgent requests, and escalations that repeatedly pull the leader away from planned or priority work.</p>
+        <div class="leak-input"><input data-key="reactive" type="number" min="0" max="10" step=".25" value="0"><span>hrs / week</span></div>
+      </div>
+
+      <div class="leak">
+        <strong>Rework & Weak Readiness</strong>
+        <p>Time lost because work, meetings, decisions, or conversations were not clear or prepared enough the first time.</p>
+        <div class="leak-input"><input data-key="rework" type="number" min="0" max="10" step=".25" value="0"><span>hrs / week</span></div>
+      </div>
+
+      <div class="leak">
+        <strong>Decision Friction</strong>
+        <p>Extra time caused by unclear ownership, repeated approvals, slow decisions, or too many issues waiting on the leader.</p>
+        <div class="leak-input"><input data-key="decisions" type="number" min="0" max="10" step=".25" value="0"><span>hrs / week</span></div>
+      </div>
+
+      <div class="leak">
+        <strong>Team Dependence on the Leader</strong>
+        <p>Time pulled back into the work because others need rescue, clarification, coaching, approval, or correction before they can move.</p>
+        <div class="leak-input"><input data-key="dependency" type="number" min="0" max="10" step=".25" value="0"><span>hrs / week</span></div>
+      </div>
+    </div>
+
+    <div class="total-band"><strong>Weekly time that could potentially be redirected</strong><div class="total" id="leakTotal">0 hrs / week</div></div>
+    <div class="clarity">
+      <strong>What this number means</strong><br>
+      This is your estimate of leadership time that could eventually be used differently if the underlying patterns improve.
+      It is not a promise that all of this time will be recovered.
+    </div>
+    <div class="navrow"><button class="back" onclick="go(1)">← Back</button><button class="next" onclick="go(3)">Continue →</button></div>
+  </div>
+</section>
+
+<section class="stage paper" id="stage-effort">
+  <div class="inner">
+    <div class="step-head">
+      <div>
+        <div class="step-kicker">03 • Account for the work of change</div>
+        <h2 class="step-title">BUILDING A BETTER SYSTEM<br><span class="red">TAKES SOME TIME TOO.</span></h2>
+        <p class="step-lead">
+          We subtract the extra time spent in coaching, reflection, and workbook work before showing the net capacity during the 12-week program.
+        </p>
+      </div>
+      <div class="step-count">03</div>
+    </div>
+
+    <div class="slider-box">
+      <div class="slider-top">
+        <div>
+          <strong>Extra program time per leader / week</strong>
+          <div class="note">
+            Include only time that is truly additional to normal work. Do not count leadership practices used inside meetings, decisions,
+            conversations, or work that would already be happening.
+          </div>
+        </div>
+        <div class="slider-value" id="programTimeValue">1 hr</div>
+      </div>
+      <input id="programTime" type="range" min=".25" max="2" step=".25" value="1">
+      <div class="scale"><span>15 min</span><span>2 hrs</span></div>
+    </div>
+
+    <div class="model-note">
+      <strong>One conservative assumption we make for you</strong>
+      <p>
+        We do not assume the full weekly improvement appears on Day 1. During the 12-week program, the estimator gradually builds toward the weekly amount you entered:
+        25% for Weeks 1–3, 50% for Weeks 4–6, 75% for Weeks 7–9, and 100% for Weeks 10–12.
+      </p>
+    </div>
+
+    <div class="navrow"><button class="back" onclick="go(2)">← Back</button><button class="next" onclick="go(4)">Continue →</button></div>
+  </div>
+</section>
+
+<section class="stage light" id="stage-reinvest">
+  <div class="inner">
+    <div class="step-head">
+      <div>
+        <div class="step-kicker">04 • Reinvestment</div>
+        <h2 class="step-title">IF THAT CAPACITY CAME BACK,<br><span class="red">WHERE SHOULD IT GO?</span></h2>
+        <p class="step-lead">
+          Choose the work that would matter most if you had more leadership capacity available.
+          Your selections will appear in the final report so the result stays connected to what you actually want to do differently.
+        </p>
+      </div>
+      <div class="step-count">04</div>
+    </div>
+
+    <div class="chip-grid">
+      <button class="chip" data-reinvest="Priority work">Priority work</button>
+      <button class="chip" data-reinvest="Better preparation">Better preparation</button>
+      <button class="chip" data-reinvest="Coaching the team">Coaching the team</button>
+      <button class="chip" data-reinvest="Customer / client work">Customer / client work</button>
+      <button class="chip" data-reinvest="Sales">Sales</button>
+      <button class="chip" data-reinvest="Strategic thinking">Strategic thinking</button>
+      <button class="chip" data-reinvest="Decision-making">Decision-making</button>
+      <button class="chip" data-reinvest="Hiring / talent">Hiring / talent</button>
+      <button class="chip" data-reinvest="Fewer escalations">Fewer escalations</button>
+      <button class="chip" data-reinvest="Other">Other</button>
+    </div>
+
+    <div class="reinvest-copy">The purpose is not to “save hours.” It is to create more capacity for higher-value leadership work.</div>
+    <div class="navrow"><button class="back" onclick="go(3)">← Back</button><button class="next" onclick="go(5)">Reveal My Capacity Picture →</button></div>
+  </div>
+</section>
+
+<section class="stage dark" id="stage-results">
+  <img class="mono-ghost" src="assets/brand-mono-dark.png" alt="" aria-hidden="true">
+  <div class="inner">
+    <div class="step-head">
+      <div>
+        <div class="step-kicker">Your capacity picture</div>
+        <h2 class="step-title">WHAT COULD<br><span class="red">CHANGE?</span></h2>
+      </div>
+      <div class="step-count">05</div>
+    </div>
+
+    <div class="report-opening">
+      <div class="big">THE BIGGER QUESTION ISN'T HOW MANY HOURS.<br><span class="red">IT'S WHAT THOSE HOURS COULD DO.</span></div>
+      <p>
+        The numbers below are only useful if the capacity is actually redirected toward better work.
+        You told us where you would want that capacity to go, so we start there.
+      </p>
+    </div>
+
+    <h3 class="priority-title">You said you would redirect capacity toward:</h3>
+    <div class="priority-grid" id="priorityGrid"></div>
+
+    <div class="result-intro">
+      <strong>Your weekly end-state assumption</strong>
+      <div class="assumption" id="weeklyAssumption">0 hrs / leader / week</div>
+      <p id="assumptionExplain">This is the amount of leadership time you estimated could eventually be used differently each week if the operating patterns improve.</p>
+    </div>
+
+    <div class="horizon-grid">
+      <div class="horizon">
+        <div class="k">During the 12-week program</div>
+        <div class="v" id="buildNet">0<span> hrs</span></div>
+        <div class="d">
+          Potential net capacity during the program after accounting for gradual improvement and the extra program time you entered.
+        </div>
+      </div>
+
+      <div class="horizon primary">
+        <div class="k">Following 12 weeks — if sustained</div>
+        <div class="v" id="next12">0<span> hrs</span></div>
+        <div class="d">
+          Potential capacity during the next 12 weeks if the full weekly amount you entered continues after the program.
+        </div>
+      </div>
+
+      <div class="horizon">
+        <div class="k">Annualized reference — if sustained</div>
+        <div class="v" id="annualizedTop">0<span> hrs</span></div>
+        <div class="d">
+          The same weekly end-state assumption extended across 52 weeks. A reference point, not a forecast or guarantee.
+        </div>
+      </div>
+    </div>
+
+    <div class="metric-grid">
+      <div class="metric"><div class="k">Gross potential during build</div><div class="v" id="grossBuild">0 hrs</div><div class="d">The modeled capacity before subtracting extra program time.</div></div>
+      <div class="metric"><div class="k">Extra program time</div><div class="v" id="participation">0 hrs</div><div class="d">The coaching/reflection/workbook time you asked us to account for.</div></div>
+      <div class="metric"><div class="k">People included</div><div class="v" id="people">1</div><div class="d">For teams, all totals are across the number of leaders you entered.</div></div>
+    </div>
+
+
+
+    <div class="context-grid">
+      <div class="context-card econ">
+        <div class="label">Economic context for the leadership time</div>
+        <div class="big" id="economicContext">$0</div>
+        <p>
+          This applies the U.S. Bureau of Labor Statistics June 2026 benchmark of
+          <strong>$88.63 per hour in total employer compensation</strong> for private-industry
+          management, business, and financial occupations to the annualized hours above.
+        </p>
+        <p>
+          <strong>This is not ROI, cash savings, revenue, or the business value created by those hours.</strong>
+          It is simply a qualified reference for what leadership time itself represents in employer compensation.
+        </p>
+        <p class="source">
+          Source: U.S. Bureau of Labor Statistics, Employer Costs for Employee Compensation, June 2026.
+          <a href="https://www.bls.gov/news.release/ecec.t04.htm" target="_blank" rel="noopener">View BLS source</a>
+        </p>
+      </div>
+
+      <div class="context-card">
+        <div class="label">Why leadership capacity can matter beyond the leader</div>
+        <div class="big">70%</div>
+        <p>
+          Gallup reports that managers account for <strong>70% of the variance in team engagement</strong>.
+          That does not mean every redirected hour creates an engagement result. It does reinforce that how a leader
+          uses capacity can affect the team, not only the leader's calendar.
+        </p>
+        <p class="source">
+          Source: Gallup, 2026.
+          <a href="https://www.gallup.com/workplace/712895/leaders-improve-employee-engagement-company-culture.aspx" target="_blank" rel="noopener">View Gallup source</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="cta-band">
+      <div>
+        <h3>Explore whether Leader OS fits.</h3>
+        <p>Discuss the demands of the role, what needs to change, and what meaningful progress would look like.</p>
+      </div>
+      <a id="contactLink" href="https://intuitogroup.com/contact-us.html" target="_top">Start a Conversation →</a>
+    </div>
+
+    <div class="navrow">
+      <button class="back" onclick="go(4)">← Adjust Inputs</button>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="back" id="print">Print / Save PDF</button>
+        <button class="back" id="reset">Start Over</button>
+      </div>
+    </div>
+
+    <div class="method">
+      <strong style="color:#fff">Plain-English math:</strong>
+      During the program, we gradually build toward your weekly estimate and subtract the extra program time.
+      The “next 12 weeks” figure assumes the full weekly amount you entered continues for another 12 weeks after the program.
+      The annualized figure extends that same weekly assumption across 52 weeks.
+      The BLS dollar figure applies a national employer-compensation benchmark to those annualized hours; it does not estimate ROI, revenue, savings, or business impact.
+    </div>
+    <div class="state-note">Your entries are kept only in this browser tab during the session so you can move backward, refresh, or return with the browser Back button without losing your work.</div>
+  </div>
+</section>
+</div>
+
+<div class="print-report" id="printReport">
+  <div class="print-head">
+    <div>
+      <div class="print-kicker">The Business Athlete • Leadership Capacity Estimator</div>
+      <div class="print-title">Your Leadership Capacity Picture</div>
+    </div>
+    <img class="print-logo" src="assets/brand-logo-light.png" alt="The Business Athlete">
+  </div>
+
+  <div class="print-message">
+    <strong>The bigger question isn't how many hours. <span style="color:#ef1019">It's what those hours could do.</span></strong>
+    <p>This summary uses the assumptions entered in the estimator. The value of recovered capacity depends on whether the operating pattern changes and where the time is redirected.</p>
+  </div>
+
+  <div class="print-horizons">
+    <div class="print-horizon">
+      <div class="k">During the 12-week program</div>
+      <div class="v" id="pBuildNet">0<span> hrs</span></div>
+      <p>Potential net capacity after gradual improvement and extra program time.</p>
+    </div>
+    <div class="print-horizon">
+      <div class="k">Following 12 weeks — if sustained</div>
+      <div class="v" id="pNext12">0<span> hrs</span></div>
+      <p>Potential capacity if the full weekly end-state assumption continues.</p>
+    </div>
+    <div class="print-horizon">
+      <div class="k">Annualized reference — if sustained</div>
+      <div class="v" id="pAnnual">0<span> hrs</span></div>
+      <p>The same weekly assumption extended across 52 weeks.</p>
+    </div>
+  </div>
+
+  <div class="print-grid">
+    <div class="print-box print-action-box">
+      <div>
+        <h4>Where you said the capacity should go</h4>
+        <div class="print-priorities" id="printPriorities"></div>
+      </div>
+
+      <div class="print-next-step">
+        <div class="print-next-kicker">Ready to put this capacity to work?</div>
+        <div class="print-paths">
+          <div class="print-path">
+            <strong>Individual Leader OS Coaching</strong>
+            <span>Private 12-week coached implementation for a leader ready to build a stronger operating system.</span>
+          </div>
+          <div class="print-path">
+            <strong>Leader OS Team Cohort</strong>
+            <span>A shared 12-week implementation for leadership teams building stronger operating practices together.</span>
+          </div>
+        </div>
+        <a class="print-contact-link" href="https://intuitogroup.com/contact-us.html">
+          START A CONVERSATION →
+        </a>
+        <div class="print-contact-url">intuitogroup.com/contact-us.html</div>
+      </div>
+    </div>
+
+    <div class="print-box">
+      <h4>Your model at a glance</h4>
+      <div class="print-facts">
+        <div class="print-fact"><div class="k">Weekly end-state</div><div class="v" id="pWeekly">0 hrs</div></div>
+        <div class="print-fact"><div class="k">People included</div><div class="v" id="pPeople">1</div></div>
+        <div class="print-fact"><div class="k">Extra program time</div><div class="v" id="pProgram">0 hrs</div></div>
+      </div>
+      <div class="print-econ">
+        <div class="print-kicker">Employer-compensation context</div>
+        <div class="money" id="pEconomic">$0</div>
+        <p>Annualized hours × $88.63/hour BLS June 2026 benchmark for private-industry management, business, and financial occupations.</p>
+        <p><strong>Not ROI, cash savings, revenue, or business value.</strong></p>
+      </div>
+      <div class="print-gallup">
+        <strong>70%</strong>
+        <span>Gallup reports managers account for 70% of the variance in team engagement — context for why leadership capacity can matter beyond the leader's own calendar.</span>
+      </div>
+      <p class="print-source">Sources: U.S. Bureau of Labor Statistics, Employer Costs for Employee Compensation, June 2026; Gallup, September 2026.</p>
+    </div>
+  </div>
+
+  <div class="print-footer">
+    <div>
+      <div class="print-cta">Leader OS • The Business Athlete</div>
+      <div class="print-url"><a href="https://intuitogroup.com/contact-us.html">intuitogroup.com/contact-us.html</a></div>
+    </div>
+    <div class="print-method">Illustrative planning model. No outcome, recovered time, financial return, or business impact is guaranteed.</div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
