@@ -1,0 +1,41 @@
+LEADER OS CAPACITY ESTIMATOR — V7 DEPLOYMENT
+
+GITHUB
+1. Sign in to GitHub.
+2. Create a new repository: leader-os-capacity-estimator
+3. Make it PUBLIC if using GitHub Free.
+4. Upload the CONTENTS of this ZIP to the repository root.
+5. Confirm the root contains index.html, styles.css, app.js, .nojekyll, assets/, README.md.
+6. Commit.
+7. Go to Settings → Pages.
+8. Build and deployment:
+   Source: Deploy from a branch
+   Branch: main
+   Folder: /(root)
+9. Save.
+10. Open the published GitHub Pages URL and test before touching Weebly.
+
+LIVE QA
+- Individual flow
+- Team flow
+- Four capacity-drain inputs
+- Back/forward
+- Refresh during use
+- Results and selected priorities
+- Program / following 12 weeks / annualized row
+- BLS compensation-time context
+- Gallup context
+- Print / Save PDF
+- Contact Us CTA
+- Browser Back from Contact Us
+- Desktop + mobile
+
+WEEBLY — ONLY AFTER GITHUB QA
+1. Create a Standard Page.
+2. Recommended name: Leadership Capacity
+3. Recommended permalink: leadership-capacity
+4. Keep hidden from navigation initially.
+5. Add an Embed Code element.
+6. Paste weebly-embed-snippet.html after replacing YOUR-GITHUB-USERNAME.
+7. Publish.
+8. Test desktop/mobile and Contact Us → browser Back.
